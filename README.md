@@ -1,2 +1,1 @@
-# Postgres-GUI
-Simple GUI PostgreSQL client written in Python.
+# postgres_gui
