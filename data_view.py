@@ -104,12 +104,13 @@ class DataView(object):
         self.store = Gtk.ListStore(*self.columns)
         self.data_tree.set_model(self.store)
 
-    def on_text_edit(self, widget, row, text, column):
+    def on_text_edit(self, widget, row, text, column_num):
         if self.data_tree.get_column(0).get_title() != 'id':
             Alert('Unable to update because we can\'t handle a missing ID column. TODO fix this')
 
-        self.store[row][column] = text
-        column_name = self.data_tree.get_column(column).get_title().replace('__', '_')
+        self.store[row][column_num] = text
+        column = self.data_tree.get_column(column_num)
+        column_name = column.get_title().replace('__', '_')
 
         try:
             cursor = self.conn.cursor()
@@ -141,7 +142,10 @@ class DataView(object):
                 data = []
 
                 for i, val in enumerate(row):
-                    data.append(self.columns[i](val))
+                    if self.columns[i](val) == 'None':
+                        data.append(None)
+                    else:
+                        data.append(self.columns[i](val))
 
                 self.store.append(data)
 

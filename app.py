@@ -29,4 +29,13 @@ Gtk.StyleContext.add_provider_for_screen(
     Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
 )
 
+# create icon object
+#statusIcon = Gtk.StatusIcon()
+
+# load it
+#statusIcon.set_from_file('icon.ico')
+
+# show it
+#statusIcon.set_visible(True)
+
 Gtk.main()

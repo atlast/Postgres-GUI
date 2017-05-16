@@ -8,6 +8,7 @@ from window_manager import WindowManager
 from data_view import DataView
 from query_view import QueryView
 
+
 class ListBoxRowWithData(Gtk.ListBoxRow):
     def __init__(self, table_name):
         super(Gtk.ListBoxRow, self).__init__()
@@ -17,6 +18,7 @@ class ListBoxRowWithData(Gtk.ListBoxRow):
         label.set_padding(5, 2.5)
         label.set_ellipsize(Pango.EllipsizeMode.END)
         self.add(label)
+
 
 class QueryWindow(object):
     LIMIT_SIZE = 20

@@ -6,6 +6,7 @@ from alert import Alert
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 
+
 class QueryView(object):
     query_tree = None
 

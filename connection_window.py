@@ -84,8 +84,10 @@ class ConnectionWindow(object):
         self.ent_database.set_text(list_box_row.data['database'] if 'database' in list_box_row.data else '')
         self.ent_remote_host.set_text(list_box_row.data['remote_host'] if 'remote_host' in list_box_row.data else '')
         self.ent_remote_user.set_text(list_box_row.data['remote_user'] if 'remote_user' in list_box_row.data else '')
-        if 'remote_key' in list_box_row.data:
+        if 'remote_key' in list_box_row.data and list_box_row.data['remote_key']:
             self.file_remote_key.set_filename(list_box_row.data['remote_key'])
+        else:
+            self.file_remote_key.unselect_all()
 
     def on_connect(self, obj):
         try:
@@ -93,8 +95,6 @@ class ConnectionWindow(object):
             tunnel = None
 
             if self.ent_remote_host.get_text():
-                print self.file_remote_key.get_filename()
-
                 tunnel = SSHTunnelForwarder(
                     self.ent_remote_host.get_text(),
                     ssh_username=self.ent_remote_user.get_text(),
