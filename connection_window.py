@@ -47,7 +47,6 @@ class ConnectionWindow(object):
         builder.connect_signals({
             'onAddConnection': self.on_add_connection,
             'onListSelected': self.on_list_selected,
-            'onListActivated': self.on_list_activated,
             'onRemoveConnection': self.on_remove_connection,
             'onSaveConnection': self.on_save_connection,
             'onConnect': self.on_connect
@@ -73,13 +72,6 @@ class ConnectionWindow(object):
 
         self.connection_list.show_all()
         self.connection_list.select_row(self.connection_list.get_row_at_index(0))
-
-    def on_list_activated(self, obj, list_box_row):
-        if not list_box_row:
-            return
-
-        self.on_list_selected(obj, list_box_row)
-        self.on_connect(obj)
 
     def on_list_selected(self, obj, list_box_row):
         if not list_box_row:
